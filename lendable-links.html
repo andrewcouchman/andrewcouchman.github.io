@@ -53,64 +53,63 @@
 </head>
 <body>
 <div class="centered">
-    <div id="container" style="--tile-background-color: rgba(255, 128, 153, 1); --column-count: 5; --row-count: 2;"><a
-            class="tile" title="gmail" href="https://accounts.google.com/b/0/AddMailService?authuser=1">
-        <div class="tile-title title-ltr"><span>gmail</span></div>
-    </a><a class="tile" title="calendar" href="https://calendar.google.com/calendar/u/0/r">
-        <div class="tile-title title-ltr"><span>calendar</span></div>
-    </a><a class="tile" title="jenkins" href="https://ci.lendable.co.uk/job/BNPL/job/bnpl-core/">
-        <div class="tile-title title-ltr"><span>jenkins</span></div>
-    </a><a class="tile" title="standup" href="https://meet.google.com/dyz-kbyv-kvp">
-        <div class="tile-title title-ltr"><span>standup</span></div>
-    </a><a class="tile" title="swagger"
-           href="https://bnpl-api-spec-prestg.test.levelcard.co.uk/spec/?url=api.json#/default/getCustomerOverview">
-        <div class="tile-title title-ltr"><span>swagger</span></div>
-    </a><a class="tile" title="datadog"
-           href="https://app.datadoghq.com/logs?query=env%3Aprestg%20service%3Abnpl-core-service%20-liveness&amp;cols=core_host%2Ccore_service&amp;index=&amp;messageDisplay=inline&amp;stream_sort=desc&amp;from_ts=1640085255284&amp;to_ts=1640099655284&amp;live=true">
-        <div class="tile-title title-ltr"><span>datadog</span></div>
-    </a><a class="tile" title="kanban board"
-           href="https://lendable-uk.atlassian.net/jira/software/c/projects/BNPL/boards/39">
-        <div class="tile-title title-ltr"><span>kanban board</span></div>
-    </a><a class="tile" title="domain example ss"
-           href="https://docs.google.com/spreadsheets/d/1DhSCVMCn1Gge8J02_W6bkQrOI7DZMHz59LpKA7HJMSk/edit#gid=0">
-        <div class="tile-title title-ltr"><span>domain example ss</span></div>
-    </a><a class="tile" title="tech debt"
-           href="https://docs.google.com/document/d/1jdBjwN5kjSc4MU2KXxoCeC6zOaCK71AjmveXzGwqCEw/edit">
-        <div class="tile-title title-ltr"><span>tech debt</span></div>
-    </a><a class="tile" title="postman"
-           href="https://obcollective.postman.co/workspace/Team-Workspace~d957b95c-9465-433d-8022-229e15943721/request/18217364-04390d2b-a58d-4974-b415-3927dcbb21a9">
-        <div class="tile-title title-ltr"><span>postman</span></div>
-    </a><a class="tile" title="vault pre-stage"
-           href="https://vault.lendable.co.uk:8200/ui/vault/secrets/secret/edit/helm/bnpl-secrets.prestg.values.yaml">
-        <div class="tile-title title-ltr"><span>vault pre-stage</span></div>
-    </a><a class="tile" title="portainer"
-           href="https://localhost:9443/#!/home">
-        <div class="tile-title title-ltr"><span>portainer</span></div>
-    </a>
-        
-        <form role="search" id="form">
-            <input type="search" id="query" name="q" placeholder="Search..."
-                   aria-label="Search through site content" autofocus>
-            <button>
-                <svg viewBox="0 0 1024 1024">
-                    <path class="path1"
-                          d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path>
-                </svg>
-            </button>
-        </form>
-    </div>
-    <script>
-        const f = document.getElementById('form');
-        const q = document.getElementById('query');
-        const google = 'https://www.google.co.uk/search?q=';
+    <div id="link-container"></div>
 
-        function submitted(event) {
-            event.preventDefault();
-            window.location = google + q.value
-        }
-
-        f.addEventListener('submit', submitted);
-    </script>
+    <form role="search" id="form">
+        <input type="search" id="query" name="q" placeholder="Search..."
+               aria-label="Search through site content" autofocus>
+        <button>
+            <svg viewBox="0 0 1024 1024">
+                <path class="path1"
+                      d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path>
+            </svg>
+        </button>
+    </form>
 </div>
+<script>
+    const f = document.getElementById('form');
+    const q = document.getElementById('query');
+    const google = 'https://www.google.co.uk/search?q=';
+
+    function submitted(event) {
+        event.preventDefault();
+        window.location = google + q.value
+    }
+
+    f.addEventListener('submit', submitted);
+</script>
 </body>
+<script>
+    class LinkInfo {
+        title;
+        urlForFindingFavicon;
+        url;
+
+        constructor(title, url, urlForFindingFavicon) {
+            this.urlForFindingFavicon = urlForFindingFavicon;
+            this.title = title;
+            this.url = url;
+        }
+    }
+
+    const links = [
+        new LinkInfo("gmail", "https://accounts.google.com/b/0/AddMailService?authuser=1", "https://mail.google.com/"),
+        new LinkInfo("calendar", "https://calendar.google.com/calendar/u/0/r", "https://calendar.google.com"),
+        new LinkInfo("jenkins", "https://ci.lendable.co.uk/job/BNPL/job/bnpl-core/", "https://www.jenkins.io/"),
+        new LinkInfo("standup", "https://meet.google.com/dyz-kbyv-kvp", "https://meet.google.com/"),
+        new LinkInfo("swagger", "https://bnpl-api-spec-prestg.test.levelcard.co.uk/spec/?url=api.json#/default/getCustomerOverview", "https://swagger.io/"),
+        new LinkInfo("datadog", "https://app.datadoghq.com/logs?query=env%3Aprestg%20service%3Abnpl-core-service%20-liveness&amp;cols=core_host%2Ccore_service&amp;index=&amp;messageDisplay=inline&amp;stream_sort=desc&amp;from_ts=1640085255284&amp;to_ts=1640099655284&amp;live=true", "https://www.datadoghq.com/"),
+        new LinkInfo("kanban board", "https://lendable-uk.atlassian.net/jira/software/c/projects/BNPL/boards/39", "https://www.atlassian.com/software/jira"),
+        new LinkInfo("domain example ss", "https://docs.google.com/spreadsheets/d/1DhSCVMCn1Gge8J02_W6bkQrOI7DZMHz59LpKA7HJMSk/edit#gid=0", "https://docs.google.com/spreadsheets"),
+        new LinkInfo("tech debt", "https://docs.google.com/document/d/1jdBjwN5kjSc4MU2KXxoCeC6zOaCK71AjmveXzGwqCEw/edit","https://docs.google.com/document" ),
+        new LinkInfo("postman", "https://obcollective.postman.co/workspace/Team-Workspace~d957b95c-9465-433d-8022-229e15943721/request/18217364-04390d2b-a58d-4974-b415-3927dcbb21a9", "https://www.postman.com/"),
+        new LinkInfo("vault pre-stage", "https://vault.lendable.co.uk:8200/ui/vault/secrets/secret/edit/helm/bnpl-secrets.prestg.values.yaml", "https://www.vaultproject.io/"),
+        new LinkInfo("portainer", "https://localhost:9443/#!/home", "https://www.portainer.io/"),
+    ];
+
+    document.getElementById("link-container").outerHTML = links.map(function (value) {
+        return "<div><a href='" + value.url + "'><img width='50' height='50' src='https://besticon.herokuapp.com/icon?size=20..50..200&url="+ value.urlForFindingFavicon +"'/>" + value.title + "</a></div>"
+    }).join("\n")
+</script>
+
 </html>
